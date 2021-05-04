@@ -19,9 +19,14 @@ while playing:
     while game_status == "ongoing":
         show(game_board)
 
-        # player move
-        current_player = next(players)
-        game_board = change(game_board, current_player)
+    # player move
+    current_player = next(players)
+    valid_move = False
+    while not valid_move:
+        try: 
+            game_board = change(game_board, current_player)
+            valid_move = True
+
 
         # stopping condition for while-loop
         game_status = determine_game_status(game_board)
