@@ -30,7 +30,7 @@ def show(game_board):
     
     return
 
-def change(game_board, player):
+def make_move(game_board, player):
     
     # game interaction
     print(f"Player {player}:")

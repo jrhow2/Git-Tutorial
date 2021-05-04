@@ -2,7 +2,7 @@ from itertools import cycle
 from helper_functions import (
     create_initial_game_board,
     show,
-    change,
+    make_move,
     determine_game_status
 )
 
@@ -21,7 +21,7 @@ while playing:
 
         # player move
         current_player = next(players)
-        game_board = change(game_board, current_player)
+        game_board = make_move(game_board, current_player)
 
         # stopping condition for while-loop
         game_status = determine_game_status(game_board)
@@ -37,3 +37,4 @@ while playing:
     keep_playing = input("Do you want to play again? (y/n) ")
     if keep_playing != "y":
         playing = False
+        
