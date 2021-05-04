@@ -26,6 +26,12 @@ while playing:
         try: 
             game_board = change(game_board, current_player)
             valid_move = True
+        except Exception as e:
+                print("\n")
+                print("Something went wrong:", e)
+                print("Hint: The chosen position must be available on the board.")
+                print("Hint: The values must be separated by a comma e.g. '0, 1'.")
+                print("Try again!", "\n")
 
 
         # stopping condition for while-loop
