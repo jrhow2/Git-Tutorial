@@ -19,14 +19,15 @@ while playing:
     while game_status == "ongoing":
         show(game_board)
 
-    # player move
-    current_player = next(players)
-    valid_move = False
-    while not valid_move:
-        try: 
-            game_board = change(game_board, current_player)
-            valid_move = True
-        except Exception as e:
+        # player move
+        current_player = next(players)
+        valid_move = False
+        while not valid_move:
+            try: 
+                game_board = change(game_board, current_player)
+                valid_move = True
+                
+            except Exception as e:
                 print("\n")
                 print("Something went wrong:", e)
                 print("Hint: The chosen position must be available on the board.")
