@@ -1,3 +1,5 @@
+from colorama import Fore, Style
+
 def create_initial_game_board():
 
     game_size = int(input("How many rows/columns should the game board have? "))
@@ -10,6 +12,7 @@ def create_initial_game_board():
         game_board.append(row)
             
     return game_board
+    
 def show(game_board):
     
     # separator between moves
@@ -21,9 +24,17 @@ def show(game_board):
         header_row += "  " + str(i)
     print(header_row)
     
-    # row numbers and actual game board
+   # row numbers and actual game board
     for row_index, row in enumerate(game_board):
-        print(row_index, row)
+        colored_row = ""
+        for item in row:
+            if item == 0:
+                colored_row += "   "
+            elif item == "X":
+                colored_row += Fore.GREEN + " X " + Style.RESET_ALL
+            elif item  == "O":
+                colored_row += Fore.MAGENTA + " O " + Style.RESET_ALL
+        print(row_index, colored_row)
     
     # empty line for clarity
     print("")
