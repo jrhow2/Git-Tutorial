@@ -47,11 +47,18 @@ def change(game_board, player):
         return game_board
 
 def determine_game_status(game_board):
+
+    # helper function
+    def all_the_same(lst):
+        player = lst[0]
+        if (lst.count(player) == len(lst)) and player != 0:
+            return True
+        else:
+            return False
     
     # horizontal winner
     for row in game_board:
-        player = row[0]
-        if row.count(player) == len(row) and player != 0:
+        if all_the_same(row):
             return "horizontal win"
         
     # vertical winner
@@ -60,8 +67,7 @@ def determine_game_status(game_board):
         for row in game_board:
             column_elements.append(row[index])
         
-        player = column_elements[0]
-        if column_elements.count(player) == len(column_elements) and player != 0:
+        if all_the_same(column_elements):
             return "vertical win"
         
     # diagonal winner (\)
@@ -69,8 +75,7 @@ def determine_game_status(game_board):
     for index in range(len(game_board)):
         diagonal_elements.append(game_board[index][index])
     
-    player = diagonal_elements[0]
-    if diagonal_elements.count(player) == len(diagonal_elements) and player != 0:
+    if all_the_same(diagonal_elements):
         return "diagonal win"
         
     # diagonal winner (/)
@@ -79,8 +84,7 @@ def determine_game_status(game_board):
     for row, column in zip(indices, reversed(indices)):
         diagonal_elements.append(game_board[row][column])
     
-    player = diagonal_elements[0]
-    if diagonal_elements.count(player) == len(diagonal_elements) and player != 0:
+    if all_the_same(diagonal_elements):
         return "diagonal win"
         
     # draw
